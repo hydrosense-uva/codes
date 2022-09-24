@@ -1,4 +1,3 @@
-from codecs import latin_1_decode
 import pandas as pd
 import geopandas as gpd
 import numpy as np
