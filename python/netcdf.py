@@ -62,6 +62,20 @@ def plot_np(array,vmin,vmax,title):
 #Above function is useful for when you need to apply np calculations
 
 
+#Example code to plot netcdf file
+lat = grace[0].lat
+lon = grace[0].lon
+grace_np = np.flip(np.array(grace[0]),axis=0)
+count_ticks = 1
+
+fig,ax = plt.subplots(figsize=(10, 7.5))
+plt.grid(color='black', linestyle='-', linewidth=0.05)
+image=ax.imshow(grace_np, cmap='RdBu_r',vmin=-10,vmax=10)
+ax.set_xticks([i for i in range(0,len(lon),count_ticks)]) 
+ax.set_xticklabels(np.int_(np.around(lon[0::count_ticks])))
+ax.set_yticks([i for i in range(0,len(lat),count_ticks)])
+ax.set_yticklabels(reversed((np.int_(np.around(lat[0::count_ticks])))))
+
 ######################################################################
 #03 Clip NETCDF
 

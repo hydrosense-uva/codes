@@ -1,13 +1,16 @@
 import pathlib
 
 #Define Main Directory
-maindir = r'C:\Users\robin\Box\HMA\Data\Climatology'
+maindir = r'F:\raw-data\AIRS\V7_DAILY'
 
 #Name strings of categories (e.g., catchment_names, variables, years) desrired for each path
 catchment_names = ['Modi','Myagdi']
 variables = ['Precip','Temp_max','Temp_min']
-years = range(2000,2017)
+years = range(2002,2023)
 sources = ['CHELSA','CHIRPS','GPM_IMERG']
+
+
+[pathlib.Path(maindir+'/{}'.format(year)).mkdir(parents=True,exist_ok=True) for year in years]
 
 #Use list comprehension for each category
 [[[[pathlib.Path(maindir+'/{}/{}/{}/{}'.format(catchment,variable,year,source)).mkdir(parents=True,exist_ok=True)
